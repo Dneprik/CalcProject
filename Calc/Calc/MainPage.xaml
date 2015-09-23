@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Calc.MainPage"
@@ -7,149 +8,145 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#DBDBDB"/>
-                <Setter Property="BorderRadius" Value="5"/>
-                <Setter Property="FontSize" Value="55"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="#DBDBDB" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="FontSize" Value="55" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
             </Style>
             <Style x:Key="OrangeButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#FFA200"/>
-                <Setter Property="BorderRadius" Value="5"/>
-                <Setter Property="FontSize" Value="55"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#FFA200" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="FontSize" Value="55" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="White" />
             </Style>
             <Style x:Key="ResultLabel" TargetType="Label">
-                <Setter Property="BackgroundColor" Value="Black"/>
-                <Setter Property="FontSize" Value="55"/>
-                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="FontSize" Value="55" />
+                <Setter Property="TextColor" Value="White" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-
-
     <Grid BackgroundColor="Black" Padding="15" ColumnSpacing="5" RowSpacing="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*" />
-            <ColumnDefinition Width="25*" />
-            <ColumnDefinition Width="25*" />
-            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-
-        <Label 
-        Style="{DynamicResource ResultLabel}"
-        Text="0"
-        Grid.Row="0"
-        Grid.Column="0"
-        Grid.ColumnSpan="4"
-        XAlign = "End"
-        x:Name="resultLabel"/>
+        <Label
+            Style="{DynamicResource ResultLabel}"
+            Text="{Binding displayValue}"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            XAlign="End"
+            x:Name="resultLabel" />
 
         <Button
             Text="1"
             Grid.Row="3"
             Grid.Column="0"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="1" />
         <Button
             Text="2"
             Grid.Row="3"
             Grid.Column="1"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="2" />
         <Button
             Text="3"
             Grid.Row="3"
             Grid.Column="2"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="3" />
         <Button
             Text="4"
             Grid.Row="2"
             Grid.Column="0"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="4" />
         <Button
             Text="5"
             Grid.Row="2"
             Grid.Column="1"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="5" />
         <Button
             Text="6"
             Grid.Row="2"
             Grid.Column="2"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="6" />
         <Button
             Text="7"
             Grid.Row="1"
             Grid.Column="0"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="7" />
         <Button
             Text="8"
             Grid.Row="1"
             Grid.Column="1"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="8" />
         <Button
             Text="9"
             Grid.Row="1"
             Grid.Column="2"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="9" />
         <Button
             Text="0"
             Grid.Row="4"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Clicked="DigitButtonClicked">
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="0" />
         <Button
             Text="="
             Grid.Row="4"
             Grid.Column="3"
             Style="{DynamicResource OrangeButton}"
-            Clicked="FuncButtonClicked">
-        </Button>
+            Command="{Binding FuncButtonClickedCommand}"
+            CommandParameter="=" />
         <Button
             Text="."
             Grid.Row="4"
             Grid.Column="2"
-            Clicked="DigitButtonClicked"
-            >
-        </Button>
+            Command="{Binding DigitButtonClickedCommand}"
+            CommandParameter="." />
         <Button
             Text="+"
             Grid.Row="3"
             Grid.Column="3"
             Style="{DynamicResource OrangeButton}"
-            Clicked="FuncButtonClicked">
-        </Button>
+            Command="{Binding FuncButtonClickedCommand}"
+            CommandParameter="+" />
         <Button
             Text="-"
             Grid.Row="2"
             Grid.Column="3"
             Style="{DynamicResource OrangeButton}"
-            Clicked="FuncButtonClicked">
-        </Button>
+            Command="{Binding FuncButtonClickedCommand}"
+            CommandParameter="-" />
         <Button
             Text="*"
             Grid.Row="1"
             Grid.Column="3"
             Style="{DynamicResource OrangeButton}"
-            Clicked="FuncButtonClicked">
-        </Button>
+            Command="{Binding FuncButtonClickedCommand}"
+            CommandParameter="*" />
     </Grid>
 </ContentPage>
